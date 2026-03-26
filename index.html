@@ -1,252 +1,753 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ZIVACYCLE — Health, Performance, Mindset</title>
-  <meta name="description" content="Educational platform for women’s hormones, metabolism, performance, and mindset. Explore the ŽIVA method and the ZIVACYCLE app.">
+  <title>Živa — Health, Performance, Mindset</title>
+  <meta name="description" content="Educational platform for women's hormones, metabolism, performance, and mindset. Explore the Živa method and the Zivacycle app.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
-:root{
-  --bg:#f8f4ef;
-  --paper:#fffdf9;
-  --text:#211d1a;
-  --muted:#6f665f;
-  --line:#e9ddd2;
-  --accent:#a56f56;
-  --accent-2:#d8b7a2;
-  --dark:#2f2622;
+    :root {
+      --bg:       #f5f2ed;
+      --paper:    #ffffff;
+
+      --text:     #2a2018;
+      --muted:    #8a7f7a;
+      --line:     #ede8e2;
+      --accent:   #8fa888;
+      --accent2:  #d89080;
+      --linen:    #f2ece5;
+      --dark:     #1a1614;
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Jost', system-ui, sans-serif;
+    }
+
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 2.0;
+  -webkit-font-smoothing: antialiased;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
-  color:var(--text);
-  background:linear-gradient(180deg,#fbf7f2 0%, #f7f0e9 100%);
-  line-height:1.55;
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.container {
+  width: min(1300px, calc(100% - 20px));
+  margin: 0 auto;
 }
-a{color:inherit;text-decoration:none}
-.container{width:min(1120px, calc(100% - 32px)); margin:0 auto}
-.nav{
-  position:sticky; top:0; z-index:20;
-  background:rgba(251,247,242,.82);
-  backdrop-filter: blur(10px);
-  border-bottom:1px solid var(--line);
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-.nav-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 0}
-.brand{font-weight:700; letter-spacing:.08em}
-.brand small{display:block; font-size:11px; color:var(--muted); letter-spacing:.18em}
-.menu{display:flex; gap:20px; flex-wrap:wrap; align-items:center}
-.btn{
-  display:inline-block; padding:12px 18px; border-radius:999px;
-  border:1px solid var(--dark); background:var(--dark); color:#fff; font-weight:600;
+.fade { animation: fadeUp .8s ease both; }
+.fade-1 { animation: fadeUp .8s .1s ease both; }
+.fade-2 { animation: fadeUp .8s .2s ease both; }
+.fade-3 { animation: fadeUp .8s .3s ease both; }
+.fade-4 { animation: fadeUp .8s .4s ease both; }
+
+/* ── Nav ── */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250,247,243,.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
 }
-.btn.secondary{background:transparent; color:var(--dark)}
-.hero{padding:72px 0 48px}
-.kicker{font-size:12px; text-transform:uppercase; letter-spacing:.18em; color:var(--accent)}
-h1{font-size:clamp(42px, 7vw, 84px); line-height:.95; margin:10px 0 18px}
-.lead{font-size:clamp(18px,2.2vw,24px); color:var(--muted); max-width:760px}
-.hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:end}
-.card{
-  background:rgba(255,253,249,.8); border:1px solid var(--line); border-radius:28px;
-  padding:26px; box-shadow:0 12px 40px rgba(47,38,34,.06);
+.nav-inner {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
 }
-.soft{
-  background: radial-gradient(circle at top, #f5e2d6, #ead7c9 40%, #d8c5b7 100%);
-  min-height:420px; border-radius:36px; position:relative; overflow:hidden;
+.brand-mark {
+  display: flex; flex-direction: column; gap: 2px;
 }
-.soft:before{
-  content:"ŽIVA"; position:absolute; inset:auto 18px 18px auto;
-  font-size:82px; color:rgba(255,255,255,.35); font-weight:700; letter-spacing:.1em;
+.brand-name {
+  font-family: var(--serif);
+  font-size: 22px; font-weight: 400;
+  font-style: italic; letter-spacing: .04em;
+  color: var(--text);
 }
-.badge{display:inline-block; padding:8px 12px; border-radius:999px; background:#fff7f1; border:1px solid var(--line); font-size:14px; margin:6px 6px 0 0}
-section{padding:26px 0 54px}
-h2{font-size:clamp(28px, 4vw, 50px); line-height:1.02; margin:0 0 14px}
-.sub{color:var(--muted); max-width:780px}
-.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-.grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
-.pillar h3,.article-card h3,.stat h3{margin:10px 0 8px; font-size:22px}
-.pillar p,.article-card p,.stat p{color:var(--muted)}
-.app-shot{
-  background:linear-gradient(180deg,#2f2622,#473a33);
-  color:#fff; border-radius:32px; padding:22px; min-height:460px;
+.nav-logo {
+  height: 38px;
+  width: auto;
+  display: block;
+  border: 1px solid #fcfcfb;
 }
-.phase{
-  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15);
-  padding:14px; border-radius:18px; margin-top:14px;
+.brand-sub {
+  font-size: 12px; letter-spacing: .28em;
+  text-transform: uppercase; color: var(--accent);
+  font-weight: 400;
 }
-.phase strong{display:block; margin-bottom:8px}
-.article-card{background:var(--paper); border:1px solid var(--line); border-radius:24px; padding:22px}
-.cta{
-  background:linear-gradient(135deg,#f0dfd3,#efe7df);
-  border:1px solid var(--line); border-radius:30px; padding:28px;
+.nav-links {
+  display: flex; align-items: center; gap: 28px;
 }
-.footer{padding:30px 0 60px; color:var(--muted)}
-.input{
-  width:100%; padding:14px 16px; border-radius:16px; border:1px solid var(--line); background:#fff;
-  font-size:16px;
+.nav-links a {
+  font-size: 12px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted);
+  transition: color .2s;
 }
-.form{display:grid; grid-template-columns:1fr auto; gap:12px; margin-top:18px}
-.list{padding-left:18px; color:var(--muted)}
-hr{border:none; border-top:1px solid var(--line); margin:22px 0}
-.article-page{max-width:840px; margin:0 auto; padding:46px 0 80px}
-.article-page h1{font-size:clamp(36px,6vw,64px)}
-.article-page p{font-size:18px; color:#433933}
-@media (max-width: 900px){
-  .hero-grid,.grid-3,.grid-2,.form{grid-template-columns:1fr}
-  .menu{display:none}
-  .soft{min-height:280px}
+.nav-links a:hover { color: var(--text); }
+
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 12px; font-weight: 400;
+  letter-spacing: .14em; text-transform: uppercase;
+  transition: all .25s;
+  cursor: pointer; border: none;
 }
-</style>
+.btn-dark {
+  background: var(--dark); color: #fff;
+}
+.btn-dark:hover { background: #3d3633; }
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--text);
+  color: var(--text);
+}
+.btn-outline:hover { background: var(--linen); }
+.btn-accent {
+  background: var(--accent); color: #fff;
+}
+.btn-accent:hover { background: #9a6a5a; }
+
+/* ── Kicker ── */
+.kicker {
+  font-size: 13px; letter-spacing: .28em;
+  text-transform: uppercase; color: var(--accent);
+  font-weight: 400; margin-bottom: 14px;
+  display: block;
+}
+
+/*  Hero  */
+.hero {
+  padding: 96px 0 72px;
+  border-bottom: 1px solid var(--line);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: flex-start;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 300; font-style: italic;
+  line-height: .95; letter-spacing: -.01em;
+  margin-bottom: 22px; color: var(--text);
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.hero-lead {
+  font-size: clamp(16px, 1.8vw, 19px);
+  color: var(--muted); max-width: 600px;
+  line-height: 1.7; margin-bottom: 32px;
+  font-weight: 300;
+}
+.hero-cta {
+  display: flex; gap: 12px;
+  flex-wrap: wrap; margin-bottom: 36px;
+}
+.badges {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  font-size: 15px; color: var(--muted);
+  letter-spacing: .06em;
+}
+
+/* Hero logo */
+.hero-logo-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.hero-logo-img {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  border-radius: 14px;
+  
+border: 1px solid #fcfcfb;
+
+  
+  
+}
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Hero visual */
+.hero-visual {
+  position: relative;
+}
+.hero-card {
+  background: linear-gradient(145deg, #2a2220, #3d3028);
+  border-radius: 32px;
+  padding: 36px 32px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.08);
+}
+.hero-card::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(176,125,110,.2) 0%, transparent 65%);
+}
+.hero-card-phase {
+  font-size: 10px; letter-spacing: .28em;
+  text-transform: uppercase; color: rgba(255,255,255,.4);
+  margin-bottom: 6px;
+}
+.hero-card-title {
+  font-family: var(--serif);
+  font-size: 34px; font-weight: 300; font-style: italic;
+  margin-bottom: 4px;
+}
+.hero-card-sub {
+  font-size: 13px; color: rgba(255,255,255,.5);
+  margin-bottom: 22px; font-weight: 300;
+}
+.phase-rows { display: flex; flex-direction: column; gap: 10px; }
+.phase-row {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px; padding: 14px 16px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.phase-row-icon { font-size: 18px; margin-top: 1px; flex-shrink: 0; }
+.phase-row-label {
+  font-size: 9px; letter-spacing: .2em;
+  text-transform: uppercase; color: rgba(255,255,255,.4);
+  margin-bottom: 3px;
+}
+.phase-row-val {
+  font-size: 14px; color: rgba(255,255,255,.85);
+  font-weight: 300; line-height: 1.4;
+}
+.phase-dots {
+  display: flex; gap: 3px; margin-top: 6px;
+}
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+}
+
+/* ── Sections ── */
+section { padding: 80px 0; }
+section + section { border-top: 1px solid var(--line); }
+
+.section-header { margin-bottom: 48px; }
+.section-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 300; font-style: italic;
+  line-height: 1; margin-bottom: 16px;
+}
+.section-header p {
+  font-size: 16px; color: var(--muted);
+  max-width: 680px; line-height: 1.7;
+}
+
+/* ── Grid ── */
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+
+/* ── Pillar cards ── */
+.pillar-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 22px; padding: 28px 26px;
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.pillar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.07);
+}
+.pillar-num {
+  font-family: var(--serif);
+  font-size: 48px; font-weight: 300;
+  color: var(--line); line-height: 1;
+  margin-bottom: 16px;
+}
+.pillar-card h3 {
+  font-family: var(--serif);
+  font-size: 24px; font-weight: 400; font-style: italic;
+  margin-bottom: 10px;
+}
+.pillar-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* ── Article cards ── */
+.article-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 22px; padding: 26px;
+  display: block;
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.article-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.07);
+}
+.article-card h3 {
+  font-family: var(--serif);
+  font-size: 22px; font-weight: 400; font-style: italic;
+  margin-bottom: 10px; line-height: 1.2;
+}
+.article-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+.article-arrow {
+  display: inline-block; margin-top: 14px;
+  font-size: 12px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent);
+}
+
+/* ── App section ── */
+.app-section { background: transparent; }
+.app-text h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 300; font-style: italic;
+  line-height: 1; margin-bottom: 18px;
+}
+.app-text p { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+.app-list {
+  list-style: none; display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 28px;
+}
+.app-list li {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 15px; color: var(--muted);
+}
+.app-list li::before {
+  content: '✦';
+  color: var(--accent); font-size: 10px; flex-shrink: 0;
+}
+
+.app-mockup {
+  background: linear-gradient(150deg, #25201d, #3a2e28);
+  border-radius: 28px; padding: 32px 28px;
+  color: #fff; height: 100%;
+}
+.app-mockup-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; margin-bottom: 22px;
+}
+.app-mockup-brand {
+  font-size: 9px; letter-spacing: .3em;
+  text-transform: uppercase; color: rgba(255,255,255,.35);
+}
+.app-mockup-day {
+  font-size: 11px; color: rgba(255,255,255,.4);
+  background: rgba(255,255,255,.08);
+  border-radius: 999px; padding: 4px 12px;
+}
+.app-mockup-phase {
+  font-family: var(--serif);
+  font-size: 36px; font-weight: 300; font-style: italic;
+  margin-bottom: 4px;
+}
+.app-mockup-tagline {
+  font-size: 13px; color: rgba(255,255,255,.4);
+  font-style: italic; margin-bottom: 22px;
+}
+.app-reco-cards { display: flex; flex-direction: column; gap: 10px; }
+.app-reco {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px; padding: 14px 16px;
+}
+.app-reco-label {
+  font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; color: rgba(255,255,255,.35);
+  margin-bottom: 5px;
+}
+.app-reco-val {
+  font-size: 14px; color: rgba(255,255,255,.85); font-weight: 300;
+}
+
+/* ── About / CTA ── */
+.about-block {
+  background: linear-gradient(135deg, var(--linen), #ede7df);
+  border: 1px solid var(--line);
+  border-radius: 28px; padding: 56px 48px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: center;
+}
+.about-block h2 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300; font-style: italic;
+  line-height: 1.05; margin-bottom: 18px;
+}
+.about-block p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+.about-stats { display: flex; flex-direction: column; gap: 20px; }
+.stat-item {
+  background: var(--paper); border-radius: 18px;
+  padding: 20px 22px; border: 1px solid var(--line);
+}
+.stat-num {
+  font-family: var(--serif);
+  font-size: 42px; font-weight: 300; font-style: italic;
+  color: var(--accent); line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-label { font-size: 12px; color: var(--muted); letter-spacing: .08em; }
+
+/* ── Waitlist ── */
+.waitlist-block {
+  text-align: center; max-width: 600px; margin: 0 auto;
+}
+.waitlist-block h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 300; font-style: italic;
+  line-height: 1; margin-bottom: 16px;
+}
+.waitlist-block p { font-size: 16px; color: var(--muted); margin-bottom: 32px; }
+.waitlist-form {
+  display: flex; gap: 10px;
+  max-width: 480px; margin: 0 auto;
+}
+.waitlist-input {
+  flex: 1; padding: 14px 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px; background: var(--paper);
+  font-family: var(--sans); font-size: 15px;
+  color: var(--text); outline: none;
+  transition: border-color .2s;
+}
+.waitlist-input:focus { border-color: var(--accent); }
+.waitlist-input::placeholder { color: var(--muted); }
+
+/* ── Footer ── */
+.footer {
+  padding: 40px 0 60px;
+  border-top: 1px solid var(--line);
+}
+.footer-inner {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 32px; flex-wrap: wrap;
+}
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 20px; font-style: italic;
+  margin-bottom: 6px;
+}
+.footer-desc { font-size: 13px; color: var(--muted); max-width: 320px; line-height: 1.6; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-copy { font-size: 12px; color: var(--muted); margin-top: 32px; }
+
+/* ── Divider ── */
+.divider {
+  height: 1px; background: var(--line); margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .hero-grid, .grid-3, .grid-2, .about-block { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .about-block { padding: 36px 24px; }
+  .hero { padding: 64px 0 48px; }
+  .waitlist-form { flex-direction: column; }
+  .waitlist-input { border-radius: 16px; }
+  .btn { border-radius: 16px; }
+  .footer-inner { flex-direction: column; }
+}
+
+
+  </style>
 </head>
 <body>
+
+  <!-- ── Nav ── -->
+
   <nav class="nav">
     <div class="container nav-inner">
-      <div class="brand">ŽIVA<small>HEALTH · PERFORMANCE · MINDSET</small></div>
-      <div class="menu">
+      <div class="brand-mark">
+        <img src="assets/ziva-logo.png" alt="Živa" class="nav-logo">
+      </div>
+      <div class="nav-links">
         <a href="#method">Method</a>
         <a href="#education">Education</a>
         <a href="#app">App</a>
         <a href="#about">About</a>
-        <a href="#join" class="btn secondary">Join waitlist</a>
+        <a href="#join" class="btn btn-dark">Join waitlist</a>
       </div>
     </div>
   </nav>
 
+  <!-- ── Hero ── -->
+
   <header class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="kicker">Educational platform + app</div>
-        <h1>Master your hormonal rhythm.</h1>
-        <p class="lead">ŽIVA is an educational platform for women who want health, performance, and mindset aligned with the female cycle. ZIVACYCLE brings that guidance into one personalized daily experience.</p>
-        <p>
-          <a class="btn" href="app.html">Open app preview</a>
-          <a class="btn secondary" href="#education">Explore education</a>
-        </p>
-        <div>
+        <span class="kicker fade">Educational platform + app</span>
+        <h1 class="fade-1">Master your<br><em>hormonal</em><br>rhythm.</h1>
+        <p class="hero-lead fade-2">Živa is an educational platform for women who want health, performance, and mindset aligned with the female cycle. Zivacycle brings that guidance into one personalised daily experience.</p>
+        <div class="hero-cta fade-3">
+          <a class="btn btn-dark" href="app.html">Open app preview</a>
+          <a class="btn btn-outline" href="#education">Explore education</a>
+        </div>
+        <div class="badges fade-4">
           <span class="badge">Hormones</span>
           <span class="badge">Metabolism</span>
           <span class="badge">Training</span>
           <span class="badge">Nutrition</span>
-          <span class="badge">Stress Regulation</span>
+          <span class="badge">Stress</span>
           <span class="badge">Mindset</span>
         </div>
       </div>
-      <div class="soft card"></div>
+
+
+  <!-- Hero logo -->
+  <div class="hero-visual fade-2">
+    <div class="hero-logo-wrap">
+      <img src="assets/ziva-logo.png" alt="Živa — women's ecosystem" class="hero-logo-img">
     </div>
+  </div>
+</div>
+
+
   </header>
+
+  <!-- ── Method ── -->
 
   <section id="method">
     <div class="container">
-      <h2>The ŽIVA Method</h2>
-      <p class="sub">The female body is rhythmic, adaptive, and intelligent. ŽIVA teaches women how to work with that rhythm — not against it — through education, awareness, and practical daily guidance.</p>
-      <div class="grid-3" style="margin-top:22px">
-        <div class="card pillar">
-          <div class="kicker">01</div>
+      <div class="section-header">
+        <span class="kicker">The Živa Method</span>
+        <h2>Work with your biology</h2>
+        <p>The female body is rhythmic, adaptive, and intelligent. Živa teaches women how to work with that rhythm — through education, awareness, and practical daily guidance.</p>
+      </div>
+      <div class="grid-3">
+        <div class="pillar-card">
+          <div class="pillar-num">01</div>
           <h3>Health</h3>
-          <p>Understand cycle phases, symptoms, recovery, and the foundations that support female physiology.</p>
+          <p>Understand cycle phases, hormones, symptoms, and the foundations that support female physiology from the inside out.</p>
         </div>
-        <div class="card pillar">
-          <div class="kicker">02</div>
+        <div class="pillar-card">
+          <div class="pillar-num">02</div>
           <h3>Performance</h3>
-          <p>Train, fuel, and recover with more precision by respecting stress load, energy, and hormonal context.</p>
+          <p>Train, fuel, and recover with more precision by respecting your stress load, energy levels, and hormonal context.</p>
         </div>
-        <div class="card pillar">
-          <div class="kicker">03</div>
+        <div class="pillar-card">
+          <div class="pillar-num">03</div>
           <h3>Mindset</h3>
-          <p>The ŽIVA woman is calm, capable, and in control of her body and mind. Awareness becomes self-trust.</p>
+          <p>The Živa woman is calm under pressure, disciplined, confident, and deeply aware of her body's intelligence.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ── Education ── -->
 
   <section id="education">
     <div class="container">
-      <h2>Education</h2>
-      <p class="sub">Start with clear, practical education designed to make hormones, metabolism, stress, and training easier to understand.</p>
-      <div class="grid-3" style="margin-top:22px">
+      <div class="section-header">
+        <span class="kicker">Education</span>
+        <h2>Start with clarity.</h2>
+        <p>Practical education designed to make hormones, metabolism, stress, and training easier to understand — and easier to apply.</p>
+      </div>
+      <div class="grid-3">
         <a class="article-card" href="articles/cycle-phases.html">
-          <div class="kicker">Article</div>
-          <h3>The four phases of the female cycle</h3>
-          <p>A simple overview of follicular, ovulatory, luteal, and menstrual phases — and why they matter.</p>
+          <span class="kicker">Article</span>
+          <h3>The rhythm of the female body</h3>
+          <p>The female cycle moves through distinct phases, each shaping energy, recovery, and focus.
+Understanding this rhythm changes how you train, fuel, and perform.</p>
+          <span class="article-arrow">Read →</span>
         </a>
         <a class="article-card" href="articles/stress-and-fat-loss.html">
-          <div class="kicker">Article</div>
+          <span class="kicker">Article</span>
           <h3>Why stress can block fat loss</h3>
-          <p>Stress changes hunger, sleep, recovery, and energy availability. Learn why that matters for progress.</p>
+          <p>Stress changes hunger, sleep, recovery, and energy availability. Learn why that matters for real progress.</p>
+          <span class="article-arrow">Read →</span>
         </a>
         <a class="article-card" href="articles/training-with-the-cycle.html">
-          <div class="kicker">Article</div>
-          <h3>Training with the cycle</h3>
-          <p>How to think about intensity, recovery, and flexibility across the month without turning it into rules.</p>
+          <span class="kicker">Article</span>
+          <h3>Training across the cycle</h3>
+          <p>How to think about intensity, recovery, and flexibility across the month — without turning it into rigid rules.</p>
+          <span class="article-arrow">Read →</span>
         </a>
       </div>
     </div>
   </section>
 
-  <section id="app">
-    <div class="container grid-2">
-      <div>
-        <h2>ZIVACYCLE app</h2>
-        <p class="sub">The app translates education into a daily recommendation layer. Users can check in with their phase, stress, sleep, and symptoms to receive direction for food, training, fasting, and recovery.</p>
-        <ul class="list">
+  <!-- ── App ── -->
+
+  <section id="app" class="app-section">
+    <div class="container grid-2" style="align-items:center; gap:48px;">
+      <div class="app-text">
+        <span class="kicker">Zivacycle app</span>
+        <h2>Your daily hormonal intelligence.</h2>
+        <p>The app translates education into a daily recommendation layer. Check your phase, stress, and sleep to receive precise direction for food, training, fasting, and recovery.</p>
+        <ul class="app-list">
           <li>Cycle-day based daily guidance</li>
-          <li>Stress and sleep aware recommendations</li>
-          <li>Training and recovery direction</li>
-          <li>Food and fasting suggestions</li>
-          <li>Mindset support and daily reflection</li>
+          <li>Personalised training intensity</li>
+          <li>Fasting windows by phase</li>
+          <li>Nutrition and supplement focus</li>
+          <li>Mindset support and reflection</li>
+          <li>AI consultation — ask Živa anything</li>
         </ul>
-        <p><a class="btn" href="app.html">See app preview</a></p>
+        <a class="btn btn-dark" href="app.html">See app preview</a>
       </div>
-      <div class="app-shot">
-        <div class="kicker" style="color:#d7b9a7">Today in ZIVACYCLE</div>
-        <h3 style="font-size:34px; margin:8px 0 0">Luteal phase</h3>
-        <p style="color:#d9c8be">Support steady energy, lower unnecessary stress load, and prioritize recovery.</p>
-        <div class="phase"><strong>Workout</strong> Moderate strength or low-impact conditioning.</div>
-        <div class="phase"><strong>Nutrition</strong> Stable meals with protein, fiber, and mineral-rich foods.</div>
-        <div class="phase"><strong>Stress</strong> Reduce intensity if sleep quality is poor.</div>
-        <div class="phase"><strong>Mindset</strong> Consistency beats perfection.</div>
+      <div>
+        <div class="app-mockup">
+          <div class="app-mockup-header">
+            <div>
+              <div class="app-mockup-brand">✦ zivacycle</div>
+            </div>
+            <div class="app-mockup-day">Day 14 of 28</div>
+          </div>
+          <div class="app-mockup-phase">Ovulatory</div>
+          <div class="app-mockup-tagline">Peak. Perform. Shine.</div>
+          <div class="app-reco-cards">
+            <div class="app-reco">
+              <div class="app-reco-label">🏋️ Workout</div>
+              <div class="app-reco-val">High intensity — this is your PR window.</div>
+            </div>
+            <div class="app-reco">
+              <div class="app-reco-label">⏱ Fasting</div>
+              <div class="app-reco-val">18:6 — you tolerate extended fasts best now.</div>
+            </div>
+            <div class="app-reco">
+              <div class="app-reco-label">🥗 Nutrition</div>
+              <div class="app-reco-val">Antioxidants · Zinc · Fibre</div>
+            </div>
+            <div class="app-reco">
+              <div class="app-reco-label">💧 Hydration</div>
+              <div class="app-reco-val">2.5 – 3.0L today — cervical fluid is high.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ── About ── -->
 
   <section id="about">
     <div class="container">
-      <div class="cta">
-        <div class="kicker">About ŽIVA</div>
-        <h2>For women who lead with awareness.</h2>
-        <p class="sub">ŽIVA is built around an elevated vision of women’s health: informed, calm, high-functioning, and deeply connected to the body’s intelligence. The goal is not fear or restriction — it is clarity, self-trust, and performance that feels aligned.</p>
+      <div class="about-block">
+        <div>
+          <span class="kicker">About Živa</span>
+          <h2>For women who lead with awareness.</h2>
+          <p>Živa is built around an elevated vision of women's health: informed, calm, high-functioning, and deeply connected to the body's intelligence. The goal is not fear or restriction — it is clarity, self-trust, and performance that feels genuinely aligned.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Cycle phases — each with unique guidance</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">28</div>
+            <div class="stat-label">Days in an average cycle — all covered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">1</div>
+            <div class="stat-label">Daily check-in — everything you need</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ── Waitlist ── -->
 
   <section id="join">
     <div class="container">
-      <h2>Join the waitlist</h2>
-      <p class="sub">Be first to hear when the educational platform and app launch publicly.</p>
-      <div class="card">
-        <form class="form" onsubmit="event.preventDefault(); alert('Waitlist form placeholder — connect this to your email platform later.');">
-          <input class="input" type="email" placeholder="Enter your email">
-          <button class="btn" type="submit">Join</button>
+      <div class="waitlist-block">
+        <span class="kicker">Join the waitlist</span>
+        <h2>Be first. Be Živa.</h2>
+        <p>Be first to hear when the educational platform and Zivacycle app launch publicly.</p>
+        <form class="waitlist-form" action="https://formspree.io/f/mpqozlrn" method="POST">
+
+
+         <input class="waitlist-input" type="email" name="email" placeholder="Your email address" required>
+
+
+          <button class="btn btn-accent" type="submit">Join →</button>
         </form>
+        <p style="font-size:12px; color:var(--muted); margin-top:14px; letter-spacing:.06em;">
+          No spam. Unsubscribe anytime.
+        </p>
       </div>
     </div>
   </section>
 
+  <!-- ── Footer ── -->
+
   <footer class="footer">
     <div class="container">
-      <hr>
-      <div class="grid-2">
+      <div class="footer-inner">
         <div>
-          <strong>ŽIVA / ZIVACYCLE</strong><br>
-          Educational platform for women’s hormones, metabolism, performance, and mindset.
+          <img src="assets/ziva-logo.png" alt="Živa" style="height:72px; width:auto; margin-bottom:12px; border-radius:8px;">
+          <div class="footer-desc">Educational platform for women's hormones, metabolism, performance, and mindset. Alive in every cycle.</div>
         </div>
-        <div>
-          Suggested live structure:<br>
-          zivacycle.com · app.zivacycle.com
+        <div class="footer-links">
+          <a href="#method">Method</a>
+          <a href="#education">Education</a>
+          <a href="#app">App</a>
+          <a href="#join">Waitlist</a>
         </div>
+      </div>
+      <div class="footer-copy">
+        © 2025 Živa / Zivacycle · zivacycle.com
       </div>
     </div>
   </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input');
+      const btn = e.target.querySelector('button');
+      btn.textContent = '✓ You\'re on the list';
+      btn.style.background = '#4a7c6e';
+      input.value = '';
+      input.disabled = true;
+      // Connect to Mailchimp / ConvertKit / Beehiiv here later
+    }
+
+    // Subtle scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.pillar-card, .article-card, .stat-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity .6s ease, transform .6s ease';
+      observer.observe(el);
+    });
+  </script>
+
 </body>
 </html>
